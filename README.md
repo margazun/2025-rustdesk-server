@@ -32,7 +32,7 @@ sudo apt update && sudo apt upgrade -y
 ```
 stream {
   map $ssl_preread_server_name $backend {
-    rust.example.com         127.0.0.1:8089; // Добавляем строку. Порт 8089 - можно указать любой свободный 
+    rust.example.com         domain_backend; // Добавляем строку. Порт 8089 - можно указать любой свободный 
     ...
   }
 }
@@ -48,7 +48,7 @@ sudo nano /etc/nginx/sites-available/rust.example.com.conf
 
 ```
 server {
-    listen 127.0.0.1:8089 ssl http2;
+    listen 444 ssl http2;
     
     ssl_certificate /etc/letsencrypt/live/rust.example.com/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/rust.example.com/privkey.pem;
@@ -183,9 +183,11 @@ sudo cat /opt/rustdesk/data/id_ed25519.pub
 ### Настройка клиента на Windows
 
 * Запускаем скачанный клиент
+
 ![client-001](images/windows-client-001.webp)
 
 * Нажимаем кнопку "Установить"
+
 ![client-002](images/windows-client-002.webp)
 
 * нажимаем кнопку "Принять и установить"
